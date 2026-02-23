@@ -1,0 +1,9 @@
+body {
+  background-color: var(--UUS-cream);
+}
+
+:root {
+  --UUS-black: #191716;
+  --UUS-green: #657153;
+  --UUS-cream: #ccc7b9;
+}
