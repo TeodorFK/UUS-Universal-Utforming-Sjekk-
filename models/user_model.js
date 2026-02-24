@@ -13,21 +13,25 @@ const userSchema = new Schema({
   },
 });
 
-//Password Hasshing using argon2
 userSchema.pre('save', async function () {
-  if (!this.isModified('password')) return;
-  this.password = await argon2.hash(this.password);
+  try {
+    if (!this.isModified('password')) return;
+
+    const hash = await argon2.hash(this.password);
+    this.password = hash;
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-//Password verification
-userSchema.methods.verifyPassword = async (candidate) => {
+async function verifyPassword(user, enteredPassword) {
   try {
-    return await argon2.verify(this.password, candidate);
+    return await argon2.verify(user.password, enteredPassword);
   } catch (err) {
-    return false;
+    console.log(err);
   }
-};
+}
 
 const User = model('user', userSchema);
 
-module.exports = User;
+module.exports = { User, verifyPassword };

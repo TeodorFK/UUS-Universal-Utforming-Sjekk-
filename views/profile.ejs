@@ -1,5 +1,17 @@
 <%- include('partials/head') %>
+<link rel="stylesheet" href="css/profile.css" />
 <body>
   <%- include('partials/nav') %>
+  <section>
+    <form action="/profile" method="POST" enctype="multipart/form-data">
+      <label for="">Title:</label>
+      <input type="text" name="title" id="title" />
+      <label for="">Url:</label>
+      <input type="text" name="url" id="url" />
+      <label for="Image">Image:</label>
+      <input type="file" name="image" id="image" accept="image/*" />
+      <button type="submit"></button>
+    </form>
+  </section>
 </body>
 <%- include('partials/footer') %>

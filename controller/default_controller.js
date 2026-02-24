@@ -1,4 +1,4 @@
-const index = (req, res) => {
+const index = async (req, res) => {
   try {
     res.render('index');
   } catch (err) {

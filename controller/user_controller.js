@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/user_model');
+const { User, verifyPassword } = require('../models/user_model');
 
 const createToken = (id) => {
   return jwt.sign({ id }, 'super-secret-key', {
@@ -19,18 +19,16 @@ const login_post = async (req, res) => {
   const { username, password } = req.body;
   try {
     const foundUser = await User.findOne({ username });
-    console.log('user', foundUser._id);
-    console.log(
-      password,
-      foundUser,
-      foundUser.password === password ? true : false,
-    );
-    if (foundUser.password === password) {
-      const token = createToken(foundUser._id);
-      res.cookie('jwt', token, { httpOnly: true, maxAge: 1000 * 1000 });
-      console.log('password is correct');
-      res.redirect('/profile');
+
+    const isValid = await verifyPassword(foundUser, password);
+    if (!isValid) {
+      console.log('Password or username is incorrect');
+      return redirect('/');
     }
+
+    const token = createToken(foundUser._id);
+    res.cookie('jwt', token, { httpOnly: true, maxAge: 1000 * 1000 });
+    res.redirect(`/:username`);
   } catch (err) {
     console.log(err);
     res.status(400).json({ err });
@@ -72,9 +70,17 @@ const logout = (req, res) => {
   }
 };
 
-const profile = (req, res) => {
+const profile = async (req, res) => {
   try {
-    res.render('profile');
+    const loggedInUser = await User.findById(req.auth.id);
+
+    if (loggedInUser.username !== req.params.username) {
+      return res.redirect(`/profil/${loggedInUser.username}`);
+    }
+
+    res.render('profile', {
+      user: loggedInUser,
+    });
   } catch (err) {
     console.log(err);
   }
