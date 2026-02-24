@@ -1,5 +1,47 @@
 body {
   background-color: var(--UUS-cream);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--UUS-green);
+  height: 15vh;
+  padding-left: 1vw;
+  padding-right: 2vw;
+}
+
+.logo img,
+.accountIcon img {
+  height: 10vh;
+  transition: transform 150ms ease;
+  transform-origin: center;
+}
+
+.logo img:hover,
+.accountIcon img:hover {
+  transform: scale(1.08);
+}
+
+main,
+.main {
+  flex: 1;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--UUS-green);
+  height: 10vh;
+  margin-top: auto;
 }
 
 :root {

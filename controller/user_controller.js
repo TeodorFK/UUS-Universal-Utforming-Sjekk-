@@ -16,15 +16,20 @@ const login_get = (req, res) => {
 };
 
 const login_post = async (req, res) => {
-  const { username, passwd } = req.body;
-  console.log(username, passwd);
+  const { username, password } = req.body;
   try {
-    const foundUser = await USer.findOne({ username });
-    console.log(foundUser._id);
-    if (foundUser.passwd === passwd) {
+    const foundUser = await User.findOne({ username });
+    console.log('user', foundUser._id);
+    console.log(
+      password,
+      foundUser,
+      foundUser.password === password ? true : false,
+    );
+    if (foundUser.password === password) {
       const token = createToken(foundUser._id);
       res.cookie('jwt', token, { httpOnly: true, maxAge: 1000 * 1000 });
-      res.status(201).redirect('profile');
+      console.log('password is correct');
+      res.redirect('/profile');
     }
   } catch (err) {
     console.log(err);
@@ -41,14 +46,17 @@ const signup_get = (req, res) => {
 };
 
 const signup_post = async (req, res) => {
-  const { username, passwd } = req.body;
-  console.log(username, passwd);
+  const { username, password, confPassword } = req.body;
+  console.log(req.body);
+  if (confPassword !== password) {
+    return;
+  }
   try {
-    const user = await User.create({ username, passwd });
+    const user = await User.create({ username, password });
     console.log(user._id);
     const token = createToken(user._id);
     res.cookie('jwt', token, { httpOnly: true, maxAge: 1000 * 1000 });
-    res.status(201).redirect('profile');
+    res.redirect('/profile');
   } catch (err) {
     console.log(err);
     res.status(400).send('error, user didnt get created');
@@ -64,10 +72,19 @@ const logout = (req, res) => {
   }
 };
 
+const profile = (req, res) => {
+  try {
+    res.render('profile');
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   login_get,
   login_post,
   signup_get,
   signup_post,
   logout,
+  profile,
 };
