@@ -2,20 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const dbhandler = require('./handler/db_handler');
+//routes
+const default_routes = require('./routes/default_routes');
+const user_routes = require('./routes/user_routes');
 
 const app = express();
 
 //Middleware
-app.use(cookieParser());
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.set('view engine', 'ejs');
-
-//routes
-const default_routes = require('./routes/default_routes');
-const user_routes = require('./routes/user_routes');
 
 app.use(default_routes);
 app.use(user_routes);

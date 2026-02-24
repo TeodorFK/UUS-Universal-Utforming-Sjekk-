@@ -6,15 +6,15 @@ const authenticate = (req, res, next) => {
     jwt.verify(token, 'super-secret-key', (err, decodedToken) => {
       if (err) {
         console.log(err.message);
-        res.redirect('login');
+        res.redirect('/login');
       } else {
-        console.log(decodedToken);
+        console.log("decoded",decodedToken);
         next();
       }
     });
   } catch (err) {
     console.log(err);
-    res.status(401).redirect('login');
+    res.redirect('/login');
   }
 };
 
