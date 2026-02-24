@@ -18,6 +18,7 @@
   "homepage": "https://github.com/TeodorFK/UUS-Universal-Utforming-Sjekk-#readme",
   "description": "",
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",

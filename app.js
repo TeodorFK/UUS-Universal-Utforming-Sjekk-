@@ -1,12 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 const dbhandler = require('./handler/db_handler');
 
 const app = express();
 
 //Middleware
+app.use(cookieParser());
 app.use(express.static('public'));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
 
