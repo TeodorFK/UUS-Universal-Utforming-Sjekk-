@@ -1,23 +1,30 @@
 const router = require('express').Router();
-const controller = require('../controller/user_controller');
-const newReview = require('../controller/review_controller');
+const user_controller = require('../controller/user_controller');
+const review_controller = require('../controller/review_controller');
 const upload = require('../middleware/upload');
 const { authenticate } = require('../middleware/auth');
+const { checkUser } = require('../middleware/checkUser');
 
-router.get('/login', controller.login_get);
-router.post('/login', controller.login_post);
+router.get('/login', checkUser, user_controller.login_get);
+router.post('/login', user_controller.login_post);
 
-router.get('/signup', controller.signup_get);
-router.post('/signup', controller.signup_post);
+router.get('/signup', checkUser, user_controller.signup_get);
+router.post('/signup', user_controller.signup_post);
 
-router.get('/logout', controller.logout);
+router.get('/logout', user_controller.logout);
 
-router.get('/profile/:username', authenticate, controller.profile);
+router.get(
+  '/profile/:username',
+  authenticate,
+  checkUser,
+  user_controller.profile,
+);
+
 router.post(
   '/profile',
   authenticate,
   upload.single('image'),
-  newReview.newReview_post,
+  review_controller.newReview_post,
 );
 
 module.exports = router;

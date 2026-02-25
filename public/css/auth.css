@@ -8,6 +8,7 @@
   border-radius: 3vh;
   margin: auto;
   gap: 2.5vh;
+  color: var(--UUS-cream);
 }
 
 .form form {
@@ -21,8 +22,6 @@
 .form label {
   align-self: center;
   margin-bottom: -1vh;
-  color: var(--UUS-black);
-  font-weight: 600;
 }
 
 .form input,
@@ -45,9 +44,12 @@
   flex-direction: column;
   align-items: center;
 }
+.account a {
+  color: var(--UUS-cream);
+}
 
 :root {
   --UUS-black: #191716;
-  --UUS-green: #657153;
+  --UUS-green: #3c4c3c;
   --UUS-cream: #ccc7b9;
 }

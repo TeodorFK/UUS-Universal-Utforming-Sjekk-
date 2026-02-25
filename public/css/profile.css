@@ -35,15 +35,36 @@
   transition: transform 150ms ease;
   transform-origin: center;
 }
+
+.form input[type='file'] {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 1vh 1vw;
+  border-radius: 5vh;
+  border: none;
+  font-size: 1rem;
+  background: transparent;
+  text-align: center;
+}
+.form input[type='file']::file-selector-button {
+  display: block;
+  margin: 0 auto;
+  padding: 1vh 1.2vw;
+  border-radius: 5vh;
+  border: none;
+  background: var(--UUS-cream);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 .form button:hover {
   cursor: pointer;
   background-color: var(--UUS-cream);
   transform: scale(1.05);
-}
-.account {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 :root {

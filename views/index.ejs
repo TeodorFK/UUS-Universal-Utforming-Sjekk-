@@ -1,5 +1,22 @@
 <%- include('partials/head') %>
 <body>
   <%- include('partials/nav') %>
+
+<section>
+  <div>
+    <% if (reviews.length > 0) { %>
+
+      <% reviews.forEach(review => { %>
+        <h1><%= review.title %></h1>
+        <img src="/uploads/<%= review.image %>" alt="">
+        <p><%= review.author.name %></p>
+        <a href="<%= review.url %>"><%= review.url %></a>
+      <% }) %>
+
+    <% } else { %>
+      <p>No reviews found</p>
+    <% } %>
+  </div>
+</section>
 </body>
 <%- include('partials/footer') %>

@@ -25,5 +25,5 @@ dbhandler.connectToDatabase('mongodb://10.12.5.6:27017/UUS-database');
 
 //404
 app.use((req, res) => {
-  res.status(400).render('404');
+  res.status(400).render('404', { user: null });
 });

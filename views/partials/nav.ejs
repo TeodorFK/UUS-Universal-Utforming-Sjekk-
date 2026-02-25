@@ -2,7 +2,13 @@
   <a href="/" class="logo"
     ><img src="/img/UUS-logo.png" alt="UUS startpage"
   /></a>
-  <a href="/profile" class="accountIcon"
+  <% if(user) {%>
+    <a href="/profile/:username" class="accountIcon"
     ><img src="/img/account-icon.png" alt="Your account"
   /></a>
+    <% }else{ %>
+  <a href="/login" class="accountIcon"
+    ><img src="/img/account-icon.png" alt="Your account"
+  /></a>
+  <% } %>
 </nav>

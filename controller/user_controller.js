@@ -28,7 +28,7 @@ const login_post = async (req, res) => {
 
     const token = createToken(foundUser._id);
     res.cookie('jwt', token, { httpOnly: true, maxAge: 1000 * 1000 });
-    res.redirect(`/:username`);
+    res.redirect(`/profile/:username`);
   } catch (err) {
     console.log(err);
     res.status(400).json({ err });
@@ -54,7 +54,7 @@ const signup_post = async (req, res) => {
     console.log(user._id);
     const token = createToken(user._id);
     res.cookie('jwt', token, { httpOnly: true, maxAge: 1000 * 1000 });
-    res.redirect('/profile');
+    res.redirect('/profile/:username');
   } catch (err) {
     console.log(err);
     res.status(400).send('error, user didnt get created');
@@ -75,7 +75,7 @@ const profile = async (req, res) => {
     const loggedInUser = await User.findById(req.auth.id);
 
     if (loggedInUser.username !== req.params.username) {
-      return res.redirect(`/profil/${loggedInUser.username}`);
+      return res.redirect(`/profile/${loggedInUser.username}`);
     }
 
     res.render('profile', {

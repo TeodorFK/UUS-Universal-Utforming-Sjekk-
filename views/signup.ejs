@@ -1,5 +1,5 @@
 <%- include('./partials/head.ejs') %>
-<link rel="stylesheet" href="css/auth.css" />
+<link rel="stylesheet" href="/css/auth.css" />
 <body>
   <%- include('./partials/nav.ejs') %>
 
@@ -7,10 +7,13 @@
     <form action="/signup" method="POST">
       <label for="username">Username</label>
       <input type="text" name="username" id="username" />
+
       <label for="">Password</label>
       <input type="password" name="password" id="password" />
+
       <label for="">Repeat Password</label>
       <input type="password" name="confPassword" id="confPassword" />
+
       <button type="submit">Log In</button>
       <div class="account">
         <p>Already have an account?</p>

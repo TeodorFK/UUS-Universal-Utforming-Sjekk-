@@ -1,8 +1,8 @@
-<%- include('partials/head') %>
-<link rel="stylesheet" href="css/profile.css" />
+<%- include('partials/head.ejs') %>
+<link rel="stylesheet" href="/css/profile.css" />
 <body>
-  <%- include('partials/nav') %>
-  <section>
+  <%- include('partials/nav.ejs') %>
+  <section class="form">
     <form action="/profile" method="POST" enctype="multipart/form-data">
       <label for="">Title:</label>
       <input type="text" name="title" id="title" />
@@ -10,8 +10,8 @@
       <input type="text" name="url" id="url" />
       <label for="Image">Image:</label>
       <input type="file" name="image" id="image" accept="image/*" />
-      <button type="submit"></button>
+      <button type="submit">submit</button>
     </form>
   </section>
 </body>
-<%- include('partials/footer') %>
+<%- include('partials/footer.ejs') %>

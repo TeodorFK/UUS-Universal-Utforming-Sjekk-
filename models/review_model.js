@@ -1,3 +1,4 @@
+require('./user_model');
 const { Schema, model, mongoose } = require('mongoose');
 
 const reviewSchema = new Schema({
@@ -7,7 +8,7 @@ const reviewSchema = new Schema({
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'user',
     required: true,
   },
   url: {

@@ -3,12 +3,16 @@ const jwt = require('jsonwebtoken');
 const authenticate = (req, res, next) => {
   const token = req.cookies.jwt;
   try {
+    if (!token) {
+      return res.redirect('/');
+    }
+
     jwt.verify(token, 'super-secret-key', (err, decodedToken) => {
       if (err) {
         console.log(err.message);
         res.redirect('/login');
       } else {
-        req.auth = { id: decodedToken.id };
+        req.auth = decodedToken;
         console.log('decoded', decodedToken);
         next();
       }

@@ -42,10 +42,11 @@ main,
   background-color: var(--UUS-green);
   height: 10vh;
   margin-top: auto;
+  color: var(--UUS-cream);
 }
 
 :root {
   --UUS-black: #191716;
-  --UUS-green: #657153;
+  --UUS-green: #3c4c3c;
   --UUS-cream: #ccc7b9;
 }
