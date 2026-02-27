@@ -1,0 +1,47 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+.reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+}
+.review {
+  background-color: var(--UUS-green);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--UUS-cream);
+  width: 40vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.review img {
+  width: 15vw;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+.review a {
+  color: var(--UUS-cream);
+}
+.review h1 {
+  margin: 0;
+}
+.review p {
+  margin: 0.5rem 0;
+}
+.review hr {
+  width: 90%;
+  border: 10;
+  border-top: 1px solid var(--UUS-cream);
+  margin: 0.75rem 0;
+}
+:root {
+  --UUS-black: #191716;
+  --UUS-green: #3c4c3c;
+  --UUS-cream: #ccc7b9;
+}

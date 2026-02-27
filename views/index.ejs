@@ -1,9 +1,9 @@
 <%- include('partials/head') %>
 <body>
   <%- include('partials/nav') %>
-
-<section>
-  <div>
+<link rel="stylesheet" href="/css/index.css">
+<section class="review">
+  <div class="review_box">
     <% if (reviews.length > 0) { %>
 
       <% reviews.forEach(review => { %>
@@ -11,6 +11,7 @@
         <img src="/uploads/<%= review.image %>" alt="">
         <p><%= review.author.name %></p>
         <a href="<%= review.url %>"><%= review.url %></a>
+        <hr>
       <% }) %>
 
     <% } else { %>

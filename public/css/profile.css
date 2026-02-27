@@ -21,7 +21,7 @@
 .form label {
   align-self: center;
   margin-bottom: -1vh;
-  color: var(--UUS-black);
+  color: var(--UUS-cream);
   font-weight: 600;
 }
 
@@ -69,6 +69,6 @@
 
 :root {
   --UUS-black: #191716;
-  --UUS-green: #657153;
+  --UUS-green: #3c4c3c;
   --UUS-cream: #ccc7b9;
 }
